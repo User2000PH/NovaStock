@@ -1,0 +1,65 @@
+
+<ng-container *ngIf="authService.estaAutenticado; else paginaPublica">
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">N</div>
+        <div>
+          <strong>NovaStock</strong>
+          <small>GESTIÓN INTELIGENTE</small>
+        </div>
+      </div>
+
+      <p class="menu-label">MENÚ PRINCIPAL</p>
+
+      <nav>
+        <a routerLink="/" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }">
+          ◫ &nbsp; Dashboard
+        </a>
+
+        <a routerLink="/productos" routerLinkActive="active">
+          ▤ &nbsp; Inventario
+        </a>
+
+        <a routerLink="/productos/nuevo">
+          ＋ &nbsp; Nuevo artículo
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="status-dot"></span>
+        Sistema de inventario
+        <small>NovaStock · Versión académica</small>
+        <br />
+        <button type="button" (click)="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">CENTRO DE CONTROL</span>
+          <h1>Gestión de inventario</h1>
+          <small *ngIf="authService.usuario">
+            {{ authService.usuario?.nombre }} ·
+            {{ authService.usuario?.rol }}
+          </small>
+        </div>
+        <span class="user-label">NS</span>
+      </header>
+
+      <section class="page-content">
+        <router-outlet></router-outlet>
+      </section>
+    </main>
+  </div>
+
+</ng-container>
+
+<ng-template #paginaPublica>
+  <router-outlet></router-outlet>
+</ng-template>

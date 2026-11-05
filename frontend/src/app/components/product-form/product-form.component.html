@@ -1,0 +1,96 @@
+<div class="form-heading">
+  <span class="section-tag">GESTIÓN DE ARTÍCULOS</span>
+  <h2>{{ editando ? 'Editar artículo' : 'Registrar artículo' }}</h2>
+  <p>
+    {{ editando
+      ? 'Actualiza los datos del producto seleccionado.'
+      : 'Completa los datos para añadir un artículo al inventario.' }}
+  </p>
+</div>
+
+<div class="notice error" *ngIf="error">{{ error }}</div>
+<div class="notice success" *ngIf="mensaje">{{ mensaje }}</div>
+
+<form #formulario="ngForm" (ngSubmit)="guardar()" class="product-form">
+  <div class="form-grid">
+    <label>
+      Código del producto *
+      <input
+        name="codigo"
+        [(ngModel)]="producto.codigo"
+        required
+        minlength="2"
+        maxlength="30"
+        placeholder="Ej. NS-001"
+      />
+    </label>
+
+    <label>
+      Nombre del artículo *
+      <input
+        name="nombre"
+        [(ngModel)]="producto.nombre"
+        required
+        minlength="2"
+        maxlength="100"
+        placeholder="Ej. Teclado mecánico"
+      />
+    </label>
+
+    <label>
+      Categoría *
+      <select name="categoria" [(ngModel)]="producto.categoria" required>
+        <option *ngFor="let c of categorias" [value]="c">{{ c }}</option>
+      </select>
+    </label>
+
+    <label>
+      Precio en soles (S/) *
+      <input
+        name="precio"
+        type="number"
+        [(ngModel)]="producto.precio"
+        required
+        min="0.01"
+        step="0.01"
+      />
+    </label>
+
+    <label>
+      Unidades disponibles *
+      <input
+        name="stock"
+        type="number"
+        [(ngModel)]="producto.stock"
+        required
+        min="0"
+        step="1"
+      />
+    </label>
+
+    <label class="full-width">
+      Descripción
+      <textarea
+        name="descripcion"
+        [(ngModel)]="producto.descripcion"
+        maxlength="300"
+        rows="4"
+        placeholder="Detalles del artículo..."
+      ></textarea>
+    </label>
+  </div>
+
+  <p class="required-note">* Campos obligatorios.</p>
+
+  <div class="form-actions">
+    <a routerLink="/productos" class="cancel-button">Cancelar</a>
+
+    <button
+      type="submit"
+      class="save-button"
+      [disabled]="formulario.invalid || guardando"
+    >
+      {{ guardando ? 'Guardando...' : (editando ? 'Guardar cambios' : 'Registrar artículo') }}
+    </button>
+  </div>
+</form>

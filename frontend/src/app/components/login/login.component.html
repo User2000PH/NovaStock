@@ -1,0 +1,42 @@
+<div class="login-container">
+  <form [formGroup]="formulario" (ngSubmit)="iniciarSesion()">
+
+    <div class="logo">N</div>
+
+    <h1>NovaStock</h1>
+    <p>Ingresa a tu panel de inventario</p>
+
+    <div class="campo">
+      <label>Correo electrónico</label>
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="usuario@novastock.com"
+      />
+      <small *ngIf="formulario.get('email')?.touched &&
+                    formulario.get('email')?.invalid">
+        Ingresa un correo válido.
+      </small>
+    </div>
+
+    <div class="campo">
+      <label>Contraseña</label>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Tu contraseña"
+      />
+      <small *ngIf="formulario.get('password')?.touched &&
+                    formulario.get('password')?.invalid">
+        La contraseña es obligatoria.
+      </small>
+    </div>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <button type="submit" [disabled]="cargando">
+      {{ cargando ? 'Ingresando...' : 'Iniciar sesión' }}
+    </button>
+
+  </form>
+</div>
