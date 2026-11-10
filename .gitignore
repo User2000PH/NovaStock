@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+
+# Variables secretas
+.env
+.env.*
+!.env.example
+
+# Compilaciones
+dist/
+build/
+
+# Archivos temporales
+.angular/
+.cache/
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
