@@ -1,0 +1,61 @@
+<div class="welcome">
+  <div>
+    <span class="section-tag">RESUMEN GENERAL</span>
+    <h2>Tu inventario, bajo control.</h2>
+    <p>Consulta el estado actual de tus artículos tecnológicos.</p>
+  </div>
+  <a routerLink="/productos/nuevo" class="primary-button">
+    + Registrar artículo
+  </a>
+</div>
+
+<p class="error" *ngIf="error">{{ error }}</p>
+
+<div class="stats-grid">
+  <article class="stat-card">
+    <span>Artículos registrados</span>
+    <strong>{{ productos.length }}</strong>
+    <small>Productos diferentes</small>
+  </article>
+
+  <article class="stat-card">
+    <span>Unidades disponibles</span>
+    <strong>{{ unidades }}</strong>
+    <small>Total de unidades en stock</small>
+  </article>
+
+  <article class="stat-card">
+    <span>Valor del inventario</span>
+    <strong>{{ valorInventario | currency:'PEN':'S/ ':'1.2-2' }}</strong>
+    <small>Precio por cantidad disponible</small>
+  </article>
+
+  <article class="stat-card warning-card">
+    <span>Stock bajo</span>
+    <strong>{{ stockBajo.length }}</strong>
+    <small>Artículos con 5 unidades o menos</small>
+  </article>
+</div>
+
+<section class="panel">
+  <div class="panel-heading">
+    <div>
+      <h3>Artículos con stock bajo</h3>
+      <p>Productos que conviene revisar.</p>
+    </div>
+    <a routerLink="/productos">Ver inventario →</a>
+  </div>
+
+  <div *ngIf="stockBajo.length === 0" class="empty-state">
+    No hay artículos con stock bajo.
+  </div>
+
+  <div class="low-stock-row" *ngFor="let p of stockBajo">
+    <div class="product-symbol">NS</div>
+    <div class="product-info">
+      <strong>{{ p.nombre }}</strong>
+      <small>{{ p.codigo }} · {{ p.categoria }}</small>
+    </div>
+    <span class="stock-badge">{{ p.stock }} unidades</span>
+  </div>
+</section>

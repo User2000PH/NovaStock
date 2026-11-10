@@ -1,0 +1,79 @@
+<div class="list-heading">
+  <div>
+    <span class="section-tag">CONTROL DE EXISTENCIAS</span>
+    <h2>Inventario de artículos</h2>
+    <p>Busca, revisa, edita o elimina los productos registrados.</p>
+  </div>
+
+  <a routerLink="/productos/nuevo" class="primary-button">
+    + Nuevo artículo
+  </a>
+</div>
+
+<div class="notice success" *ngIf="mensaje">{{ mensaje }}</div>
+<div class="notice error" *ngIf="error">{{ error }}</div>
+
+<div class="filters">
+  <input
+    type="text"
+    [(ngModel)]="busqueda"
+    placeholder="Buscar por nombre o código..."
+    aria-label="Buscar productos"
+  />
+
+  <select [(ngModel)]="categoria" aria-label="Filtrar por categoría">
+    <option value="">Todas las categorías</option>
+    <option value="Computadoras">Computadoras</option>
+    <option value="Accesorios">Accesorios</option>
+    <option value="Perifericos">Periféricos</option>
+    <option value="Almacenamiento">Almacenamiento</option>
+    <option value="Otros">Otros</option>
+  </select>
+</div>
+
+<section class="table-panel">
+  <div class="table-summary">
+    <strong>Productos registrados</strong>
+    <span>{{ productosFiltrados.length }} resultados</span>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>CÓDIGO / ARTÍCULO</th>
+          <th>CATEGORÍA</th>
+          <th>PRECIO</th>
+          <th>STOCK</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of productosFiltrados">
+          <td>
+            <strong>{{ p.nombre }}</strong>
+            <small class="code">{{ p.codigo }}</small>
+          </td>
+          <td>{{ p.categoria }}</td>
+          <td>{{ p.precio | currency:'PEN':'S/ ':'1.2-2' }}</td>
+          <td>
+            <span [class.low-stock]="p.stock <= 5">
+              {{ p.stock }}
+            </span>
+          </td>
+          <td class="actions">
+            <a [routerLink]="['/productos/editar', p._id]">Editar</a>
+            <button type="button" (click)="eliminar(p)">Eliminar</button>
+          </td>
+        </tr>
+
+        <tr *ngIf="productosFiltrados.length === 0">
+          <td colspan="5" class="empty">
+            No hay productos que coincidan con la búsqueda.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

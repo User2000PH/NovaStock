@@ -1,0 +1,171 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 245px minmax(0, 1fr);
+  background: #f4f7fb;
+  color: #172b4d;
+}
+
+.sidebar {
+  background: #14243a;
+  color: #d7e2f0;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: #25b7a5;
+  border-radius: 12px;
+  color: #10263a;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.brand strong,
+.brand small,
+.sidebar-footer small {
+  display: block;
+}
+
+.brand strong {
+  color: white;
+  font-size: 19px;
+}
+
+.brand small,
+.menu-label,
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.menu-label {
+  color: #8da4bd;
+  margin: 12px 8px 0;
+}
+
+nav {
+  display: grid;
+  gap: 8px;
+}
+
+nav a {
+  padding: 13px 12px;
+  border-radius: 9px;
+  color: #d7e2f0;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a.active {
+  background: #253d56;
+  color: #53dfc9;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 12px;
+  line-height: 2;
+  color: #b8c8d9;
+}
+
+.sidebar-footer small {
+  color: #8da4bd;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #4fdb9b;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.main-content {
+  min-width: 0;
+}
+
+.topbar {
+  background: white;
+  border-bottom: 1px solid #e3eaf2;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar h1 {
+  font-size: 23px;
+  margin: 7px 0 0;
+}
+
+.eyebrow {
+  color: #169d90;
+  font-weight: 700;
+}
+
+.user-label {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #d8f6f0;
+  color: #147d72;
+  font-weight: 800;
+}
+
+.page-content {
+  padding: 30px;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding: 18px;
+    gap: 14px;
+  }
+
+  nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  nav a {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  .sidebar-footer,
+  .menu-label {
+    display: none;
+  }
+
+  .topbar {
+    padding: 20px;
+  }
+
+  .page-content {
+    padding: 16px;
+  }
+}

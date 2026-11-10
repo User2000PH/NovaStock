@@ -1,0 +1,167 @@
+.list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.list-heading h2 {
+  margin: 8px 0;
+  font-size: 26px;
+}
+
+.list-heading p {
+  margin: 0;
+  color: #78889c;
+}
+
+.section-tag {
+  color: #159b8c;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.primary-button {
+  background: #147f77;
+  color: white;
+  padding: 12px 15px;
+  border-radius: 9px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.filters input,
+.filters select {
+  background: white;
+  border: 1px solid #dbe4ee;
+  border-radius: 9px;
+  padding: 12px;
+  min-width: 0;
+  font: inherit;
+}
+
+.filters input {
+  flex: 1;
+}
+
+.table-panel {
+  background: white;
+  border: 1px solid #e2eaf2;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.table-summary {
+  padding: 19px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.table-summary span,
+.code {
+  color: #78889c;
+  font-size: 12px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  background: #f7f9fc;
+  color: #75869b;
+  font-size: 11px;
+  letter-spacing: .6px;
+}
+
+th,
+td {
+  padding: 16px;
+  border-top: 1px solid #eaf0f5;
+}
+
+td strong,
+.code {
+  display: block;
+}
+
+.code {
+  margin-top: 5px;
+}
+
+.low-stock {
+  color: #b76c12;
+  background: #fff0d5;
+  border-radius: 6px;
+  padding: 5px 9px;
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+.actions a,
+.actions button {
+  margin-right: 9px;
+  font: inherit;
+  font-size: 12px;
+}
+
+.actions a {
+  color: #147f77;
+  text-decoration: none;
+}
+
+.actions button {
+  border: 0;
+  background: transparent;
+  color: #c04444;
+  cursor: pointer;
+}
+
+.empty {
+  text-align: center;
+  color: #78889c;
+}
+
+.notice {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.success {
+  color: #16724c;
+  background: #e2f8eb;
+}
+
+.error {
+  color: #ad3333;
+  background: #fde8e8;
+}
+
+@media (max-width: 650px) {
+  .list-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+}
